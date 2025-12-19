@@ -1,23 +1,20 @@
-# Use the official Node.js image.
 FROM node:20
 
-# Set the working directory in the container.
 WORKDIR /app
 
-# Copy package.json and package-lock.json.
+# Fix npm CI issues
+RUN npm install -g npm@latest
+
 COPY package*.json ./
 
-# Install dependencies.
-RUN npm ci
+# More stable than npm ci in Docker
+RUN npm install
 
-# Copy the rest of the application code.
 COPY . .
 
-# Build the application.
+# Build NestJS app
 RUN npm run build
 
-# Expose the application port.
 EXPOSE 3333
 
-# Run the application.
 CMD ["npm", "run", "start:docker"]
