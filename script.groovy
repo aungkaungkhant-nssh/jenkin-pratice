@@ -1,5 +1,4 @@
 def buildImage(){
-    docker-hub-id
     echo 'building the docker image.....'
     withCredentials([usernamePassword(credentialsId: 'docker-hub-id', passwordVariable: 'DOCKER_HUB_PASSWORD', usernameVariable: 'DOCKER_HUB_USERNAME')]) {
         sh '''
