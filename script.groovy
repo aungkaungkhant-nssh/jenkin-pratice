@@ -10,3 +10,5 @@ def deployApp(version){
     echo 'deploying the application....'
     echo "deploying the version ${version}"
 }
+
+return this
