@@ -1,16 +1,18 @@
+@Library('jenkins-shared-library') _
+
 pipeline {
     agent any
 
     stages {
         stage('Build') {
             steps {
-                echo "Building branch: ${env.BRANCH_NAME}"
+                buildImage()
             }
         }
 
         stage('Test') {
             steps {
-                echo "Running tests on ${env.BRANCH_NAME}"
+               testImage()
             }
         }
     }
