@@ -4,15 +4,11 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Build and push image') {
             steps {
-                buildImage()
-            }
-        }
-
-        stage('Test') {
-            steps {
-               testImage()
+                buildImage "aungkaungkhant107/docker-test:v1.0.3"
+                dockerLogin
+                dockerPush "aungkaungkhant107/docker-test:v1.0.3"
             }
         }
     }
