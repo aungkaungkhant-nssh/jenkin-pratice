@@ -7,7 +7,7 @@ pipeline {
         stage('Build and push image') {
             steps {
                 buildImage "aungkaungkhant107/docker-test:v1.0.3"
-                dockerLogin
+                dockerLogin()
                 dockerPush "aungkaungkhant107/docker-test:v1.0.3"
             }
         }
